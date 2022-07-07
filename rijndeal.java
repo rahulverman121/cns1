@@ -8,6 +8,7 @@
 	import javax.crypto.Cipher;
 	import javax.crypto.KeyGenerator;
 	import javax.crypto.SecretKey;
+	import javax.crypto.spec.*;
 public class rijndeal {
 
 	
@@ -20,7 +21,7 @@ public class rijndeal {
 			kg.init(128);
 			SecretKey sk=kg.generateKey();
 			byte[] raw=sk.getEncoded();
-			SecretKeySpace sks=new SecretKeySpace(raw,"AES");
+			SecretKeySpec sks=new SecretKeySpec(raw,"AES");
 			Cipher c=Cipher.getInstance("AES");
 			c.init(Cipher.ENCRYPT_MODE,sks);
 			byte[]encrypt=c.doFinal(message.getBytes());
